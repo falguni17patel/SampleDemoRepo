@@ -1,0 +1,48 @@
+<!-- <ng-template #content let-c="close" let-d="dismiss"> -->
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title"><b>User details</b></h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="activeModal.close()"></button>
+	</div>
+	<div class="modal-body" >
+		<!-- <ngx-extended-pdf-viewer [src]="pdfurl"></ngx-extended-pdf-viewer> -->
+        <body>
+            <div class="container mt-4">
+              
+                <form >
+                    <div class="mb-3">
+                        <!-- <input type="text" formControlName="uid" hidden> -->
+                        <label for="ticketNo" class="form-label">Ticket Number : {{name.ticketNo}}</label>
+                        
+                    
+                      
+                    </div>
+                    <div class="mb-3">
+                        <label for="fname" class="form-label">First Name : {{name.fname}}</label>
+                    
+                       
+                    </div>
+                    <div class="mb-3">
+                        <label for="lname" class="form-label">last Name : {{name.lname}}</label>
+                    
+                       
+                    </div>
+                    <div class="mb-3">
+                        <label for="address" class="form-label">Address : {{name.address}}</label>
+                    
+                       
+                    </div>
+                    <div class="mb-3">
+                        <label for="contactNo" class="form-label">Contact Number : {{name.contactNo}}</label>
+                    
+                      
+                    </div>
+            
+                  
+            </form>
+            </div>
+            </body>
+            
+	</div>
+	<div class="modal-footer">
+        <input class="btn btn-success" type="submit" name="submit_reg" (click)="activeModal.close();" value="Ok" >
+		<!-- <button type="button" class="btn btn-danger" (click)="activeModal.close()">Close</button><p>view-user-modal-component works!</p> -->
