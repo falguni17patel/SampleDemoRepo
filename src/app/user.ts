@@ -12,5 +12,5 @@ export class User {
         lname: string,
         address: string,
         contactNo: number
-    ){}
+    ) { }
 }

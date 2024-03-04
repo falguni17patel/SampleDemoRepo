@@ -11,29 +11,23 @@ import { ToastrmessagesService } from '../toastrmessages.service';
   styleUrl: './remove-user-modal-component.component.css'
 })
 export class RemoveUserModalComponentComponent {
-  activeModal=inject(NgbActiveModal);
-  constructor(private service: ViewuserserviceService,private viewdata:ViewUserComponent,private toastr: ToastrmessagesService){}
-  name:User;
-removeUserData(uid:any){
-  console.log(uid)
-  this.service.GetUser(uid).subscribe(res=>{
-    console.log(res);
-    console.log("Got user")
-  this.service.Removeuser(uid).subscribe(res => {
-    console.log(res);
-    console.log("removed user")
-    // this.LoadUser();
-    this.viewdata.ngOnInit();
+  activeModal = inject(NgbActiveModal);
+  constructor(private service: ViewuserserviceService, private viewdata: ViewUserComponent, private toastr: ToastrmessagesService) { }
+  name: User;
+  removeUserData(uid: any) {
+    console.log(uid)
+    this.service.GetUser(uid).subscribe(res => {
+      console.log(res);
+      console.log("Got user")
+      this.service.Removeuser(uid).subscribe(res => {
+        console.log(res);
+        console.log("removed user")
+        this.viewdata.ngOnInit();
+      }, error => console.log(error));
+    })
+  }
 
-    // this.viewdata.ngAfterViewInit();
-    //  this.viewdata.ngOnInit();
-    // this.viewdata.dtTrigger.next(null);
-    // this.viewdata.dtoptions
-  }, error => console.log(error));
-})
-}
-
-successuserremove(){
-  this.toastr.successmessage("User removed successfully");
-}
+  successuserremove() {
+    this.toastr.successmessage("User removed successfully");
+  }
 }

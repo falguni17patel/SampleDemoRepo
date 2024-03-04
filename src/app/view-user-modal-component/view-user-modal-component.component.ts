@@ -9,15 +9,6 @@ import { User } from '../user';
   styleUrl: './view-user-modal-component.component.css'
 })
 export class ViewUserModalComponentComponent {
-  activeModal=inject(NgbActiveModal);
-  name:User;
-// registerform: FormGroup<any>;
-// registerform=new FormGroup({
-//   uid: new FormControl,
-//   ticketNo:new FormControl,
-//   fname:new FormControl,
-//   lname:new FormControl,
-//   address:new FormControl,
-//   contactNo:new FormControl,
-// });
+  activeModal = inject(NgbActiveModal);
+  name: User;
 }

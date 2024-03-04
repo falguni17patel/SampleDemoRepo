@@ -9,8 +9,8 @@ import { Observable, catchError, retry, throwError } from 'rxjs';
 export class RegistrationService {
 
   private baseUrl = 'http://localhost:8080/';
-  
-  constructor(private http:HttpClient) { }
+
+  constructor(private http: HttpClient) { }
 
   // public doRegistration(user:User){
   //   return this.http.post("http://localhost:8080/register",user,{responseType:'text' as 'json'});
@@ -28,9 +28,9 @@ export class RegistrationService {
     //return an observable with a user facing error message
     return throwError('something bad happened, please try again later');
   }
-  doRegistration(user:any){
+  doRegistration(user: any) {
     console.log(user);
-    return this.http.post(`${this.baseUrl}`+'register', user);
+    return this.http.post(`${this.baseUrl}` + 'register', user);
     // return this.http.post<User>(`${this.baseUrl}`+'register', user)
     // .pipe(retry(2),catchError(this.handleError));
   }

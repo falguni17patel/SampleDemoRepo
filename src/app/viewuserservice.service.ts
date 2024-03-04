@@ -24,27 +24,27 @@ export class ViewuserserviceService {
     //return an observable with a user facing error message
     return throwError('something bad happened, please try again later');
   }
-  GetAllUsers():Observable<User> {
+  GetAllUsers(): Observable<User> {
     return this.http.get<User>(this.baseUrl + 'getAllUser');
     // return this.http.get<User>(this.baseUrl + 'getAllUser').pipe(retry(2),catchError(this.handleError));
   }
-  GetUser(uid: any):Observable<User>{
-    return this.http.get<User>(this.baseUrl + 'getUser/' + uid).pipe(retry(2),catchError(this.handleError));
+  GetUser(uid: any): Observable<User> {
+    return this.http.get<User>(this.baseUrl + 'getUser/' + uid).pipe(retry(2), catchError(this.handleError));
   }
   Removeuser(uid: any) {
     console.log(uid)
     console.log("remove service")
-    return this.http.delete(this.baseUrl + "removeUser/" + uid).pipe(retry(2),catchError(this.handleError));
+    return this.http.delete(this.baseUrl + "removeUser/" + uid).pipe(retry(2), catchError(this.handleError));
 
   }
-  EditUserData(user: User):Observable<User> {
+  EditUserData(user: User): Observable<User> {
     console.log(user)
-    return this.http.put<User>(this.baseUrl+"updateUser",user);
+    return this.http.put<User>(this.baseUrl + "updateUser", user);
     // return this.http.put<User>(this.baseUrl + "updateUser",JSON.stringify(user)).pipe(retry(2),catchError(this.handleError));
   }
   doRegistration(user: User): Observable<User> {
     console.log(user);
-    return this.http.post<User>(`${this.baseUrl}`+'register', JSON.stringify(user))
-    .pipe(retry(2),catchError(this.handleError));
+    return this.http.post<User>(`${this.baseUrl}` + 'register', JSON.stringify(user))
+      .pipe(retry(2), catchError(this.handleError));
   }
 }

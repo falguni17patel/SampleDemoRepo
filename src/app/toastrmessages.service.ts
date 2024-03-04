@@ -6,9 +6,8 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ToastrmessagesService {
 
-  constructor(private alert:ToastrService) { }
-  successmessage(message:string)
-  {
+  constructor(private alert: ToastrService) { }
+  successmessage(message: string) {
     this.alert.success(message);
   }
 }
