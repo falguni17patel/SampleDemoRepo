@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="card" >
+      <div>
+      <h2>Register</h2>
+      <form [formGroup]="newUserForm">
+    <div class="mb-4">
+      <label for="username" class="form-label">User Name</label>
+        <input type="text" id="username" name="username" formControlName="username" placeholder="Username" required>
+      <small *ngIf="username.invalid && (username.dirty || username.touched)">
+      <div class="text-danger" *ngIf="username.errors?.['required']"> username is Required</div>
+      </small>
+    </div>
+    <div class="mb-4">
+      <label for="name" class="form-label">Name</label>
+        <input type="text" id="name" name="name" formControlName="name" placeholder="Name" required>
+      <small *ngIf="name.invalid && (name.dirty || name.touched)">
+      <div class="text-danger" *ngIf="name.errors?.['required']"> Name is Required</div>
+      </small>
+    </div>
+    <div class="mb-4">
+      <label for="email" class="form-label">Email</label>
+        <input type="text" id="email" name="email" formControlName="email" placeholder="Email" required>
+      <small *ngIf="email.invalid && (email.dirty || email.touched)">
+      <div class="text-danger" *ngIf="email.errors?.['required']"> Email is Required</div>
+      <div class="text-danger" *ngIf="email.errors?.['email']"> Email should be valid</div>
+      </small>
+    </div>
+    <div class="mb-4">
+      <label for="password" class="form-label">Password</label>
+        <input type="password" id="password" name="password" formControlName="password" placeholder="Password" required>
+          <small *ngIf="password.invalid && (password.dirty || password.touched)">
+            <div class="text-danger" *ngIf="password.errors?.['required']"> Password is Required</div>
+            </small>
+          </div>  
+    <div class="mb-4">
+      <label for="confirmpassword" class="form-label">Confirm Password</label>
+      <input type="password" id="confirmpassword" name="confirmpassword" formControlName="confirmpassword" placeholder="confirm Password" required>
+        <small *ngIf="confirmpassword.invalid && (confirmpassword.dirty || confirmpassword.touched)">
+          <div class="text-danger" *ngIf="confirmpassword.errors?.['required']"> Confirm Password is Required</div>
+          </small>
+          <!-- <small *ngIf="confirmpassword.errors?.['passwordMismatch'] && confirmpassword.valid && confirmpassword.valid"> -->
+          <!-- Password should match -->
+        <!-- </small> -->
+        </div>   
+        <button type="button"  (click)="newsignup();" [disabled]="newUserForm.invalid">Register</button>
+    
+      </form>
+    </div>
+    <div class="mt-2">
+Already a member? <a routerLink="/login">Login</a>
+    </div>
+<br>
+    </div>
+  </div>

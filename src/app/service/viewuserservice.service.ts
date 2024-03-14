@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { User } from './user';
+import { User } from '../class/user';
 import { Observable, catchError, retry, throwError } from 'rxjs';
 import { error } from 'console';
 
@@ -8,7 +8,8 @@ import { error } from 'console';
   providedIn: 'root'
 })
 export class ViewuserserviceService {
-  private baseUrl = 'http://localhost:8080/';
+  private baseUrl = 'http://rkgroupapp-env.eba-ibrg2hhf.eu-north-1.elasticbeanstalk.com/users/';
+  // private baseUrl = 'http://localhost:5000/users/';
 
   constructor(private http: HttpClient) { }
 

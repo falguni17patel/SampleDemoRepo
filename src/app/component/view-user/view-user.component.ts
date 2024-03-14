@@ -7,12 +7,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButton } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { User } from '../user';
+import { User } from '../../class/user';
 import { HttpClient } from '@angular/common/http';
-import { ViewuserserviceService } from '../viewuserservice.service';
+import { ViewuserserviceService } from '../../service/viewuserservice.service';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { ToastrmessagesService } from '../toastrmessages.service';
+import { ToastrmessagesService } from '../../service/toastrmessages.service';
 import { RemoveUserModalComponentComponent } from '../remove-user-modal-component/remove-user-modal-component.component';
 import { ViewUserModalComponentComponent } from '../view-user-modal-component/view-user-modal-component.component';
 @Component({
@@ -31,7 +31,7 @@ export class ViewUserComponent implements AfterViewInit, OnInit {
 
   user: User = new User(0, 0, "", "", "", 0);
 
-  constructor(private service: ViewuserserviceService, private toastr: ToastrmessagesService, private modalservice: NgbModal) { }
+  constructor(private viewuserservice: ViewuserserviceService, private toastr: ToastrmessagesService, private modalservice: NgbModal) { }
 
   displayedColumns: string[] = ['uid', 'ticketNo', 'fname', 'lname', 'address', 'contactNo', 'actions'];
   userData: User[] = [];
@@ -61,7 +61,7 @@ export class ViewUserComponent implements AfterViewInit, OnInit {
   }
   getAllUsers() {
     console.log("called get all users")
-    this.service.GetAllUsers().subscribe(res =>
+    this.viewuserservice.GetAllUsers().subscribe(res =>
       this.dataSource.data = res as unknown as User[]);
     console.log("over getallusers")
   }
@@ -90,7 +90,7 @@ export class ViewUserComponent implements AfterViewInit, OnInit {
     this.user.contactNo = this.registerform.value.contactNo;
     console.log(this.user)
 
-    this.service.EditUserData(this.user).subscribe(data => {
+    this.viewuserservice.EditUserData(this.user).subscribe(data => {
       this.toastr.successmessage('User Edited successfully');
       let result: any;
       result = data;
@@ -122,7 +122,7 @@ export class ViewUserComponent implements AfterViewInit, OnInit {
   }
   removeUserData(uid: any) {
     console.log(uid)
-    this.service.Removeuser(uid).subscribe(res => {
+    this.viewuserservice.Removeuser(uid).subscribe(res => {
       console.log(res);
       this.getAllUsers();
     }, error => console.log(error));

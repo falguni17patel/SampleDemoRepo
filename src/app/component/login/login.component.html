@@ -1,0 +1,41 @@
+<!-- <form [formGroup]="loginForm">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email address/User name</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" formControlName="email" aria-describedby="emailHelp">
+         </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input type="password" class="form-control" formControlName="email" id="exampleInputPassword1">
+    </div>
+  
+    <button type="submit" class="btn btn-primary" value="submit" (click)="signin()">Submit</button>
+  </form> -->
+
+  <div class="container">
+    <div class="card" >
+      <div>
+      <h2>Login</h2>
+      <form [formGroup]="loginForm">
+    <div class="mb-4">
+        <input type="text" id="username" name="email" formControlName="email" placeholder="Username/Email" required>
+      <small *ngIf="email.invalid && (email.dirty || email.touched)">
+      <div class="text-danger" *ngIf="email.errors?.['required']"> Email is Required</div>
+      </small>
+    </div>
+    <div class="mb-4">
+      <input type="password" id="password" name="password" formControlName="password" placeholder="Password" required>
+        <small *ngIf="password.invalid && (password.dirty || password.touched)">
+          <div class="text-danger" *ngIf="password.errors?.['required']"> Password is Required</div>
+          </small>
+        </div>   
+        <button type="button"  (click)="signin();" [disabled]="loginForm.invalid">Login</button>
+    
+      </form>
+    </div>
+    <div class="mt-2">
+<!-- Not a member? <a routerLink="/newloginUser">Register</a> -->
+    </div>
+<br>
+      <a routerLink="/registration" class="nav-link" class="btn btn-primary active" role="button">Add User</a>
+    </div>
+  </div>

@@ -1,9 +1,9 @@
 import { Component, inject } from '@angular/core';
-import { User } from '../user';
+import { User } from '../../class/user';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { ViewuserserviceService } from '../viewuserservice.service';
+import { ViewuserserviceService } from '../../service/viewuserservice.service';
 import { ViewUserComponent } from '../view-user/view-user.component';
-import { ToastrmessagesService } from '../toastrmessages.service';
+import { ToastrmessagesService } from '../../service/toastrmessages.service';
 
 @Component({
   selector: 'app-remove-user-modal-component',

@@ -10,4 +10,7 @@ export class ToastrmessagesService {
   successmessage(message: string) {
     this.alert.success(message);
   }
+  error(message: string) {
+    this.alert.error(message);
+  }
 }

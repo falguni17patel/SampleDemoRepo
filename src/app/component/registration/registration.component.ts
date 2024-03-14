@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../user';
-import { RegistrationService } from '../registration.service';
+import { User } from '../../class/user';
+import { RegistrationService } from '../../service/registration.service';
 import { AbstractControl, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
-import { ViewuserserviceService } from '../viewuserservice.service';
+import { ViewuserserviceService } from '../../service/viewuserservice.service';
+import { response } from 'express';
+import { ToastrmessagesService } from '../../service/toastrmessages.service';
 
 @Component({
   selector: 'app-registration',
@@ -13,7 +15,7 @@ import { ViewuserserviceService } from '../viewuserservice.service';
 export class RegistrationComponent implements OnInit {
   user: User = new User(0, 0, "", "", "", 0);
   // user:User;
-  message: any;
+  response: any;
   submitted = false;
   integerRegex = /^\d+$/
 
@@ -25,7 +27,7 @@ export class RegistrationComponent implements OnInit {
     contactNo: new FormControl('', [Validators.required, Validators.maxLength(10), Validators.minLength(10), Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
   });
 
-  constructor(private service: RegistrationService) { }
+  constructor(private service: RegistrationService,private toastService:ToastrmessagesService) { }
 
   ngOnInit() {
     this.submitted = false;
@@ -43,7 +45,15 @@ export class RegistrationComponent implements OnInit {
 
 
     console.log(this.user);
-    this.service.doRegistration(this.user).subscribe(data => console.log(data), error => console.log(error));
+    this.service.doRegistration(this.user).subscribe((data:any) =>{ 
+      console.log(data)
+      this.response=data;
+    if(this.response.result)
+    {
+this.toastService.successmessage(this.response.message);
+    }
+    },
+    error => console.log(error));
     this.registerform.reset();
   }
 

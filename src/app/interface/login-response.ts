@@ -1,0 +1,22 @@
+export class LoginResponse {
+    email:any;
+    result:any;
+    username:any;
+    message:any;
+    role:
+    {
+        id:any;
+        name:any;
+    }
+constructor(
+    email:String,
+    result:boolean,
+    username:String,
+    message:String,
+    role:{
+        id:number,
+        name:String
+    }
+    )
+{}
+}
