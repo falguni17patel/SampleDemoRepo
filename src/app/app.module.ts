@@ -4,11 +4,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RegistrationComponent } from './registration/registration.component';
-import { RegistrationService } from './registration.service';
+import { RegistrationComponent } from './component/registration/registration.component';
+import { RegistrationService } from './service/registration.service';
 import { HttpClientModule } from '@angular/common/http';
-import { ViewUserComponent } from './view-user/view-user.component';
-import { ViewuserserviceService } from './viewuserservice.service';
+import { ViewUserComponent } from './component/view-user/view-user.component';
+import { ViewuserserviceService } from './service/viewuserservice.service';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
@@ -18,10 +18,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
-import { ToastrmessagesService } from './toastrmessages.service';
-import { RemoveUserModalComponentComponent } from './remove-user-modal-component/remove-user-modal-component.component';
-import { ViewUserModalComponentComponent } from './view-user-modal-component/view-user-modal-component.component';
+import { ToastrmessagesService } from './service/toastrmessages.service';
+import { RemoveUserModalComponentComponent } from './component/remove-user-modal-component/remove-user-modal-component.component';
+import { ViewUserModalComponentComponent } from './component/view-user-modal-component/view-user-modal-component.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { LoginService } from './service/login.service';
+import { LayoutComponent } from './component/layout/layout.component';
+import { PagenotfoundComponent } from './component/pagenotfound/pagenotfound.component';
+import { LoginComponent } from './component/login/login.component';
+import { NewuserComponent } from './component/newuser/newuser.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +34,11 @@ import { MatDialogModule } from '@angular/material/dialog';
     RegistrationComponent,
     ViewUserComponent,
     RemoveUserModalComponentComponent,
-    ViewUserModalComponentComponent
+    ViewUserModalComponentComponent,
+    LoginComponent,
+    LayoutComponent,
+    PagenotfoundComponent,
+    NewuserComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +59,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     NgbModule,
     ToastrModule.forRoot(),
   ],
-  providers: [ViewuserserviceService, RegistrationService, ToastrmessagesService, provideClientHydration()],
+  providers: [LoginService,LoginComponent, ViewuserserviceService, RegistrationService, ToastrmessagesService, provideClientHydration()],
 
   bootstrap: [AppComponent]
 

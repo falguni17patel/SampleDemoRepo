@@ -1,8 +1,0 @@
-{
-  "routes": [
-    "/",
-    "/./",
-    "/registration",
-    "/view-user"
-  ]
-}
